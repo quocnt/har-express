@@ -20,7 +20,7 @@ const options = args.reduce((acc, value, index) => {
         acc.port = parseInt(args[index+1], 10);
     } else if (fs.existsSync(value)) {
         acc.har = value;
-    } else if (value === '-t' || type === '--mine-type') {
+    } else if (value === '-t' || value === '--mine-type') {
         acc.mimeType = value;
     } 
     return acc;
