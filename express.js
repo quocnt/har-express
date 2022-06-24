@@ -21,7 +21,7 @@ const options = args.reduce((acc, value, index) => {
     } else if (fs.existsSync(value)) {
         acc.har = value;
     } else if (value === '-t' || value === '--mine-type') {
-        acc.mimeType = value;
+        acc.mimeType = args[index+1];
     } 
     return acc;
 }, { port: 3000 });
