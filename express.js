@@ -20,14 +20,16 @@ const options = args.reduce((acc, value, index) => {
         acc.port = parseInt(args[index+1], 10);
     } else if (fs.existsSync(value)) {
         acc.har = value;
-    }
+    } else if (value === '-t' || type === '--mine-type') {
+        acc.mimeType = value;
+    } 
     return acc;
 }, { port: 3000 });
 
 if (options.help || !options.har) {
     printHelp();
 } else {
-    app.use(har.getMiddleware(options.har));
+    app.use(har.getMiddleware(options.har, options));
     app.use((req, res) => {
         res.status(404).send();
     });

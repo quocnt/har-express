@@ -73,7 +73,8 @@ function parse(path) {
  * Note if it find more than one results it will try to be more restrictive
  * using queryString and body payload.
  */
-function filter(HAR, req, options=DEFAULT_OPTIONS) {
+function filter(HAR, req, options={}) {
+    options = Object.assign(DEFAULT_OPTIONS, options);
     // lets do a first pass on it.
     const entries = HAR.log.entries.filter(e => {
         const u = e.request.url;
